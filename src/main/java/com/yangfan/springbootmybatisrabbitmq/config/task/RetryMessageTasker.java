@@ -7,16 +7,19 @@ import com.yangfan.springbootmybatisrabbitmq.entity.Order;
 import com.yangfan.springbootmybatisrabbitmq.mapper.BrokerMessageLogMapper;
 import com.yangfan.springbootmybatisrabbitmq.producer.RabbitOrderSender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
-
+@Component
 public class RetryMessageTasker {
     @Autowired
     private RabbitOrderSender rabbitOrderSender;
     @Autowired
     private BrokerMessageLogMapper brokerMessageLogMapper;
 
+    @Scheduled(initialDelay = 5000, fixedDelay = 10000)
     public void reSend() {
         List<BrokerMessageLog> brokerMessageLogs = brokerMessageLogMapper.query4StatusAndTimeoutMessage();
         brokerMessageLogs.forEach(messagelog -> {

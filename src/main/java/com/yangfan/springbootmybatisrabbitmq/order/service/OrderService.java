@@ -31,7 +31,7 @@ public class OrderService {
         // 插入消息记录表数据
         BrokerMessageLog brokerMessageLog = new BrokerMessageLog();
         // 消息唯一ID
-        brokerMessageLog.setMessageId(order.getMessage_id());
+        brokerMessageLog.setMessageId(order.getMessageId());
         // 保存消息整体 转为JSON 格式存储入库
         brokerMessageLog.setMessage(JSONObject.toJSONString(order));
         // 设置消息状态为0 表示发送中

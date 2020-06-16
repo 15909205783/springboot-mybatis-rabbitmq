@@ -25,7 +25,6 @@ public class RabbitOrderSender {
         public void confirm(CorrelationData correlationData, boolean ack, String cause) {
             String messageId = correlationData.getId();
             if (ack) {
-
                 //如果回调成功，则更改消息的状态
                 brokerMessageLogMapper.changeBrokerMessageLogStatus(messageId, Constants.ORDER_SEND_SUCCESS, new Date());
             } else {
@@ -38,7 +37,7 @@ public class RabbitOrderSender {
     public void sendOrder(Order order) {
         rabbitTemplate.setConfirmCallback(confirmCallback);
         //消息唯一ID
-        CorrelationData correlationData = new CorrelationData(order.getId());
+        CorrelationData correlationData = new CorrelationData(order.getMessageId());
         rabbitTemplate.convertAndSend("order-exchange", "order.ABC", order, correlationData);
     }
 }

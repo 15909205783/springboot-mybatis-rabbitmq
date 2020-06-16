@@ -13,20 +13,15 @@
     </resultMap>
 
     <select id="query4StatusAndTimeoutMessage" resultMap="BaseResultMap">
-        <![CDATA[
-
               select message_id, message, try_count, status, next_retry, create_time, update_time
                   from broker_message_log bml
                   where status = '0'
-                  and next_retry <= sysdate()
-
-        ]]>
     </select>
 
     <insert id="insert" parameterType="com.yangfan.springbootmybatisrabbitmq.entity.BrokerMessageLog">
         insert into
           broker_message_log
-          (messageId,status,update_time)
+          (message_id,status,update_time)
         values
           (#{messageId},#{status},#{updateTime})
     </insert>

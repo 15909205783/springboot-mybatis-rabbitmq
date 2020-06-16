@@ -9,7 +9,7 @@ public class Order implements Serializable {
 
     private String name;
 
-    private String message_id;
+    private String messageId;
 
     public Order() {
     }
@@ -34,11 +34,11 @@ public class Order implements Serializable {
         this.name = name;
     }
 
-    public String getMessage_id() {
-        return message_id;
+    public String getMessageId() {
+        return messageId;
     }
 
-    public void setMessage_id(String message_id) {
-        this.message_id = message_id;
+    public void setMessageId(String messageId) {
+        this.messageId = messageId;
     }
 }
