@@ -5,11 +5,11 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@RabbitListener(queues = "orderQueue")
 public class OrderConsumer {
 
-    @RabbitHandler
+    @RabbitListener(queues = "orderQueue")
     public void handler(Object msg) {
+        System.out.println("_________________________________________________________________________");
         System.out.println(msg);
     }
 }

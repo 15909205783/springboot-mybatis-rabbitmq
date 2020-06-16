@@ -1,36 +1,33 @@
 package com.yangfan.springbootmybatisrabbitmq.config.task;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
-import org.springframework.amqp.core.Queue;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-@ConfigurationProperties(prefix = "rabbitmq")
 @Configuration
 public class QueueConfig {
     @Bean
-    public Queue helloQueue() {
+    public Queue queueMessage() {
         return new Queue("orderQueue");
     }
-    @Value("queueName")
-    private String queueName;
-    @Value("exchangeName")
-    private String exchangeName;
-    @Value("routingKey")
-    private String routingKey;
+
+//    @Bean
+//    public Queue queueMessages() {
+//        return new Queue(TopicRabbitConfig.messages);
+//    }
+
     @Bean
-    public Queue OrderQueue() {
-        return new Queue(queueName);
+    DirectExchange exchange() {
+        return new DirectExchange("orderExchange");
     }
+
     @Bean
-    FanoutExchange fanoutExchange(){
-        return new FanoutExchange(exchangeName);
+    Binding bindingExchangeMessage(Queue queueMessage, DirectExchange exchange) {
+        return BindingBuilder.bind(queueMessage).to(exchange).with("order.A");
     }
+
     @Bean
-    Binding bindingExchangeA(Queue OrderQueue, FanoutExchange fanoutExchange){
-        return   BindingBuilder.bind(OrderQueue).to(fanoutExchange);
+    Binding bindingExchangeMessages(Queue queueMessages, DirectExchange exchange) {
+        return BindingBuilder.bind(queueMessages).to(exchange).with("order.A");
     }
+
 }

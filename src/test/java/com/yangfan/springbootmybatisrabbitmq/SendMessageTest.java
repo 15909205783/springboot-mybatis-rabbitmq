@@ -20,10 +20,10 @@ public class SendMessageTest {
     @Test
     public void testSender2() throws Exception {
         Order order = new Order();
-        order.setId("2018080400000007");
+        order.setId("2018080400000005");
         order.setName("测试订单");
         order.setMessageId(System.currentTimeMillis() + "$" + UUID.randomUUID().toString());
-       // orderService.createOrder(order);
+       orderService.createOrder(order);
         rabbitOrderSender.sendOrder(order);
     }
 
