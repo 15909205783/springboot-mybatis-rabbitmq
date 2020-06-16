@@ -1,0 +1,4 @@
+rabbitmq:
+  queueName: orderQueue
+  exchangeName: orderExchange
+  routingKey: order.A

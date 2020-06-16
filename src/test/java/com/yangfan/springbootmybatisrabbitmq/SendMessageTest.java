@@ -2,7 +2,7 @@ package com.yangfan.springbootmybatisrabbitmq;
 
 import com.yangfan.springbootmybatisrabbitmq.entity.Order;
 import com.yangfan.springbootmybatisrabbitmq.order.service.OrderService;
-import com.yangfan.springbootmybatisrabbitmq.producer.RabbitOrderSender;
+import com.yangfan.springbootmybatisrabbitmq.consumer.RabbitOrderSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class SendMessageTest {
         order.setId("2018080400000007");
         order.setName("测试订单");
         order.setMessageId(System.currentTimeMillis() + "$" + UUID.randomUUID().toString());
-        orderService.createOrder(order);
+       // orderService.createOrder(order);
         rabbitOrderSender.sendOrder(order);
     }
 

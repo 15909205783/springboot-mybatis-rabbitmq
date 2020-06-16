@@ -1,4 +1,4 @@
-package com.yangfan.springbootmybatisrabbitmq.producer;
+package com.yangfan.springbootmybatisrabbitmq.consumer;
 
 import com.sun.tools.corba.se.idl.constExpr.Or;
 import com.yangfan.springbootmybatisrabbitmq.constant.Constants;
@@ -38,6 +38,6 @@ public class RabbitOrderSender {
         rabbitTemplate.setConfirmCallback(confirmCallback);
         //消息唯一ID
         CorrelationData correlationData = new CorrelationData(order.getMessageId());
-        rabbitTemplate.convertAndSend("order-exchange", "order.ABC", order, correlationData);
+        rabbitTemplate.convertAndSend("orderExchange", "order.A", order, correlationData);
     }
 }

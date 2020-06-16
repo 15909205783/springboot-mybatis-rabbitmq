@@ -5,7 +5,7 @@ import com.yangfan.springbootmybatisrabbitmq.constant.Constants;
 import com.yangfan.springbootmybatisrabbitmq.entity.BrokerMessageLog;
 import com.yangfan.springbootmybatisrabbitmq.entity.Order;
 import com.yangfan.springbootmybatisrabbitmq.mapper.BrokerMessageLogMapper;
-import com.yangfan.springbootmybatisrabbitmq.producer.RabbitOrderSender;
+import com.yangfan.springbootmybatisrabbitmq.consumer.RabbitOrderSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

@@ -6,7 +6,7 @@ import com.yangfan.springbootmybatisrabbitmq.entity.BrokerMessageLog;
 import com.yangfan.springbootmybatisrabbitmq.entity.Order;
 import com.yangfan.springbootmybatisrabbitmq.mapper.BrokerMessageLogMapper;
 import com.yangfan.springbootmybatisrabbitmq.mapper.OrderMapper;
-import com.yangfan.springbootmybatisrabbitmq.producer.RabbitOrderSender;
+import com.yangfan.springbootmybatisrabbitmq.consumer.RabbitOrderSender;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
