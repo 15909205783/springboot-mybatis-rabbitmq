@@ -1,6 +1,5 @@
 package com.yangfan.springbootmybatisrabbitmq.consumer;
 
-import com.sun.tools.corba.se.idl.constExpr.Or;
 import com.yangfan.springbootmybatisrabbitmq.constant.Constants;
 import com.yangfan.springbootmybatisrabbitmq.entity.Order;
 import com.yangfan.springbootmybatisrabbitmq.mapper.BrokerMessageLogMapper;
@@ -20,6 +19,7 @@ public class RabbitOrderSender {
     @Autowired
     private BrokerMessageLogMapper brokerMessageLogMapper;
 
+
     final RabbitTemplate.ConfirmCallback confirmCallback = new RabbitTemplate.ConfirmCallback() {
         @Override
         public void confirm(CorrelationData correlationData, boolean ack, String cause) {
@@ -32,6 +32,7 @@ public class RabbitOrderSender {
                 System.err.println("异常处理...");
             }
         }
+
     };
 
     public void sendOrder(Order order) {

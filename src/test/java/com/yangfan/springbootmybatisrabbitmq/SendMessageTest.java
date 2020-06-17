@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.UUID;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SendMessageTest {
@@ -17,13 +18,14 @@ public class SendMessageTest {
     private RabbitOrderSender rabbitOrderSender;
     @Autowired
     private OrderService orderService;
+
     @Test
     public void testSender2() throws Exception {
         Order order = new Order();
-        order.setId("2018080400000005");
+        order.setId("2018080400000002");
         order.setName("测试订单");
         order.setMessageId(System.currentTimeMillis() + "$" + UUID.randomUUID().toString());
-       orderService.createOrder(order);
+        orderService.createOrder(order);
         rabbitOrderSender.sendOrder(order);
     }
 
