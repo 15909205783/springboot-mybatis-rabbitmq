@@ -22,7 +22,7 @@ public class SendMessageTest {
     @Test
     public void testSender2() throws Exception {
         Order order = new Order();
-        order.setId("2018080400000002");
+        order.setId("201808040000000128");
         order.setName("测试订单");
         order.setMessageId(System.currentTimeMillis() + "$" + UUID.randomUUID().toString());
         orderService.createOrder(order);

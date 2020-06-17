@@ -21,6 +21,6 @@ public class OrderConsumer {
     public void handler(Channel channel, Message message) throws IOException {
         System.out.println("_________________________________________________________________________");
         System.out.print(message);
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+        channel.basicNack(message.getMessageProperties().getDeliveryTag(), false,false);
     }
 }

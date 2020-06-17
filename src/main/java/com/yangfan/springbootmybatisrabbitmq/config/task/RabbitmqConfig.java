@@ -1,3 +1,4 @@
+/*
 package com.yangfan.springbootmybatisrabbitmq.config.task;
 
 import org.springframework.amqp.core.Message;
@@ -25,3 +26,4 @@ public class RabbitmqConfig implements RabbitTemplate.ReturnCallback {
 //        System.out.println("sender success");
 //    }
 }
+*/
