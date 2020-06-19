@@ -1,29 +1,26 @@
-/*
 package com.yangfan.springbootmybatisrabbitmq.config.task;
 
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
+@Component
+public class Rabbitmqconfig {
 
-@Service
-public class RabbitmqConfig implements RabbitTemplate.ReturnCallback {
-    @Autowired
-//    private AmqpTemplate rabbitTemplate;
-    private RabbitTemplate rabbitTemplate;
-
-
-    @Override
-    public void returnedMessage(Message message, int i, String s, String s1, String s2) {
-        System.out.println("-------------------------1-----------------------------");
-        System.out.println("sender return success" + message.toString() + "===" + i + "===" + s1 + "===" + s2);
-        System.out.println("-------------------------2-----------------------------");
+    @Bean(name = "userOrderQueue")
+    public Queue userOrderQueue(){
+        return new Queue("userOrderQueue.",true);
+    }
+    @Bean
+    public TopicExchange userOrderExchange(){
+        return new TopicExchange("userOrderExchange",true,false);
+    }
+    @Bean
+    public Binding userOrderBinding(){
+      return   BindingBuilder.bind(userOrderQueue()).to(userOrderExchange()).with("order.A");
     }
 
-//    @Override
-//    public void confirm(CorrelationData correlationData, boolean b, String s) {
-//        System.out.println("sender success");
-//    }
 }
-*/
