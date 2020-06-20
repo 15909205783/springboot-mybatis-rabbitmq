@@ -92,7 +92,7 @@
   </update>
 
     <!--更新库存量-->
-    <update id="updateTotal">
+    <update id="updateTotal" parameterType="java.lang.String">
     UPDATE product a
     SET a.total = a.total - 1
     WHERE a.product_no = #{productNo}
@@ -101,10 +101,9 @@
   </update>
 
     <!--根据产品号查询-->
-    <select id="selectByProductNo" resultType="com.yangfan.springbootmybatisrabbitmq.entity.Product">
-        SELECT <include refid="Base_Column_List"/>
+    <select id="selectByProductNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT  id, product_no, total, create_time, update_time
         FROM product WHERE product_no=#{productNo}
-
         AND total>0
     </select>
 

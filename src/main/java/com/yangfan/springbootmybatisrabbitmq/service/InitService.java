@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Service
 public class InitService {
     private static final Logger log = LoggerFactory.getLogger(InitService.class);
+    private ExecutorService pool = Executors.newCachedThreadPool();
 
     public static final int ThreadNum = 200;
 
@@ -26,7 +29,7 @@ public class InitService {
         try {
             CountDownLatch countDownLatch = new CountDownLatch(100);
             for (int i = 0; i < ThreadNum; i++) {
-                new Thread(new RunThread(countDownLatch)).start();
+                pool.submit(new RunThread(countDownLatch));
             }
             //TODO：启动多个线程
             countDownLatch.countDown();

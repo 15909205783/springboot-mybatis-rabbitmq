@@ -1,7 +1,6 @@
 package com.yangfan.springbootmybatisrabbitmq.mapper;
 
 import com.yangfan.springbootmybatisrabbitmq.entity.Product;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,7 +17,7 @@ public interface ProductMapper {
 
     int updateByPrimaryKey(Product record);
 
-    Product selectByProductNo(@Param("productNo") String productNo);
+    Product selectByProductNo(String productNo);
 
-    int updateTotal(Product record);
+    int updateTotal(String productNo);
 }
