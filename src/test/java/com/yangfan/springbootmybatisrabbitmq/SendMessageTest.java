@@ -1,7 +1,7 @@
 package com.yangfan.springbootmybatisrabbitmq;
 
 import com.yangfan.springbootmybatisrabbitmq.entity.Order;
-import com.yangfan.springbootmybatisrabbitmq.order.service.OrderService;
+import com.yangfan.springbootmybatisrabbitmq.service.OrderService;
 import com.yangfan.springbootmybatisrabbitmq.consumer.RabbitOrderSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;

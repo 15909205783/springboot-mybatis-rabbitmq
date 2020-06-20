@@ -1,4 +1,4 @@
-package com.yangfan.springbootmybatisrabbitmq.order.service;
+package com.yangfan.springbootmybatisrabbitmq.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yangfan.springbootmybatisrabbitmq.constant.Constants;
