@@ -1,4 +1,4 @@
-package com.yangfan.springbootmybatisrabbitmq.config.task;
+package com.yangfan.springbootmybatisrabbitmq.config.queues;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

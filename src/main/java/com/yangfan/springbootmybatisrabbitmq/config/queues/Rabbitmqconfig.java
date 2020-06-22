@@ -1,4 +1,4 @@
-package com.yangfan.springbootmybatisrabbitmq.config.task;
+package com.yangfan.springbootmybatisrabbitmq.config.queues;
 
 import com.yangfan.springbootmybatisrabbitmq.consumer.UserOrderListener;
 import org.springframework.amqp.core.Binding;
